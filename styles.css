@@ -92,12 +92,12 @@ h3 { margin-bottom: 9px; font-size: 1.5rem; }
 .callout { padding: 58px clamp(25px, 6vw, 78px); border-radius: 18px; background: linear-gradient(105deg, var(--teal), #175d68); color: white; text-align: center; }
 .callout h2 { margin-bottom: 12px; }
 .callout p { max-width: 590px; margin: 0 auto 25px; color: #e0f0eb; }
-.instagram-section { padding: 92px 0; background: var(--cream); }
-.instagram-header { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+.instagram-section { padding: 64px 0 72px; background: var(--cream); }
+.instagram-header { display: flex; width: min(100%, 72rem); align-items: end; justify-content: space-between; gap: 30px; margin: 0 auto 20px; }
 .instagram-header .lede { margin-bottom: 0; }
 .instagram-header .button { flex-shrink: 0; }
-.instagram-preview { min-height: 690px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: var(--shadow); }
-.instagram-preview iframe { display: block; width: 100%; height: 860px; border: 0; background: white; }
+.instagram-preview { container-type: inline-size; width: min(100%, 72rem); margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: var(--shadow); }
+.instagram-preview iframe { display: block; width: 100%; height: 33rem; height: calc(9.25rem + 33.333cqi); border: 0; background: white; }
 .instagram-note { margin: 15px 0 0; color: var(--muted); font-size: .84rem; text-align: center; }
 .instagram-note a { color: var(--teal); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
 
@@ -203,8 +203,6 @@ h3 { margin-bottom: 9px; font-size: 1.5rem; }
   .section-heading, .split, .booking-shell { grid-template-columns: 1fr; }
   .section-heading { gap: 5px; margin-bottom: 30px; }
   .instagram-header { align-items: start; flex-direction: column; gap: 18px; }
-  .instagram-preview { min-height: 550px; }
-  .instagram-preview iframe { height: 700px; }
   .image-panel { min-height: 340px; order: -1; border-radius: 120px 120px 14px 14px; }
   .class-grid, .offer-grid, .visit-grid, .feature-list, .metrics, .form-grid { grid-template-columns: 1fr; }
   .booking-aside { min-height: 245px; }
