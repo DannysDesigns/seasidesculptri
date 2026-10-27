@@ -1,37 +1,42 @@
-# Seaside Sculpt RI
+# Seaside Sculpt
 
-The website prototype for Seaside Sculpt RI, a Narragansett, Rhode Island fitness studio.
+The public website for Seaside Sculpt, a Narragansett, Rhode Island group fitness studio.
 
-## Pages
+## Public pages
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Public home page |
-| `/classes/` | Class descriptions |
-| `/schedule/` | Example class schedule |
-| `/pricing/` | Example passes and memberships |
-| `/closeout/` | Staff daily-closeout prototype |
-| `/host/` | Staff welcome-desk prototype |
+| `/` | Studio home page |
+| `/classes/` | Indoor cycle, barre, yoga + stretch, and Spin & Sculpt |
+| `/schedule/` | Directs customers to the live Mindbody schedule and reservation flow |
+| `/pricing/` | Publicly advertised introductory offer, packs, and membership options |
+| `/visit/` | Studio location, directions, and first-visit details |
 
-The schedule, pricing, roster, payments, and contact details are demonstration content. Confirm and replace these details before launch.
+The website's booking calls to action link to the studio's official [Mindbody listing](https://www.mindbodyonline.com/explore/locations/seaside-sculpt), which is the source of truth for live schedule, availability, account management, and purchases.
+
+## Staff prototypes
+
+`/closeout/` and `/host/` are static workflow prototypes only. They are not connected to customer, attendance, booking, or payment systems. Before using these routes with operational data, protect them with Cloudflare Access and implement authenticated server-side integrations.
 
 ## Local preview
 
-From the project folder, run:
+From the project directory:
 
 ```powershell
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000` in a browser.
+Open `http://localhost:8000`.
 
-## Deploy with Cloudflare Pages
+## Cloudflare Pages
 
-1. In Cloudflare, open **Workers & Pages**, then select **Create application** and **Pages**.
-2. Connect the `DannysDesigns/seasidesculptri` repository.
-3. Use `main` as the production branch, select the `None` framework preset, leave the build command blank, and set the build output directory to `/`.
-4. Deploy and confirm the generated `pages.dev` URL.
-5. Add `seasidesculptri.com` and `www.seasidesculptri.com` in the Pages project's **Custom domains** settings.
-6. Configure a permanent redirect from the apex domain to the preferred `www` address and enable HTTPS in Cloudflare.
+Cloudflare Pages deploys the `main` branch automatically. For a static deployment:
 
-Before staff workflows use actual customer, financial, or attendance data, protect `/closeout/` and `/host/` with Cloudflare Access and connect those pages to authenticated server-side services.
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Build command | Leave blank |
+| Build output directory | `.` |
+
+Connect `seasidesculptri.com` and `www.seasidesculptri.com` under the Pages project's **Custom domains** settings. Keep `https://seasidesculptri.com` as the canonical public URL and permanently redirect `www` to the apex domain.

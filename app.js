@@ -1,32 +1,30 @@
-const page = document.body.dataset.page;
+const menuButton = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-document.querySelector(".menu-toggle")?.addEventListener("click", (event) => {
-  const menu = document.querySelector(".nav-links");
-  const isOpen = menu.classList.toggle("open");
-  event.currentTarget.setAttribute("aria-expanded", isOpen);
+menuButton?.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  document.body.classList.toggle("nav-open", isOpen);
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
 });
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
-  if (link.getAttribute("href").startsWith(page)) link.setAttribute("aria-current", "page");
+  link.addEventListener("click", () => {
+    navLinks?.classList.remove("open");
+    document.body.classList.remove("nav-open");
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.setAttribute("aria-label", "Open navigation");
+  });
 });
 
 const showToast = (message) => {
   const toast = document.querySelector(".toast");
   if (!toast) return;
+
   toast.textContent = message;
   toast.classList.add("visible");
   window.setTimeout(() => toast.classList.remove("visible"), 2600);
 };
-
-document.querySelector("#class-filter")?.addEventListener("change", (event) => {
-  document.querySelectorAll("[data-class]").forEach((row) => {
-    row.hidden = event.target.value !== "all" && row.dataset.class !== event.target.value;
-  });
-});
-
-document.querySelectorAll("[data-book]").forEach((button) => {
-  button.addEventListener("click", () => showToast("Demo booking selected. Connect this button to your scheduling platform."));
-});
 
 document.querySelectorAll("[data-staff-action]").forEach((button) => {
   button.addEventListener("click", () => {
